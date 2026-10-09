@@ -1,0 +1,3086 @@
+{
+ "logic": "QF_NRA",
+ "source": "SMT-LIB 2025 non-incremental, Zenodo record 15493090",
+ "seed": 2026,
+ "per_family": 10,
+ "timeout": 10,
+ "tuning": [
+  {
+   "path": "20161105-Sturm-MBO/mbo_E13E18.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E1E27.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E3E24.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E3E4.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E7E12.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E12E26.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E17E18.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E5E9.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E6E20.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "sat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E4E7.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_03.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_10.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "sat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_04.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_02.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_05.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20170501-Heizmann-UltimateInvariantSynthesis/nested.c_4_2_2.bpl_3.smt2",
+   "family": "20170501-Heizmann-UltimateInvariantSynthesis",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0074e.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0053c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0064e.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0065c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0067a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0086e.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0015c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0064a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0016c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0056e.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/IsoTriangle-Median_Perimeter_a1.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RightTriangle-Bottema1_19a.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegPentagon-Diagonal_Side.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegHendecagon-Diagonal_Side.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/IsoRightTriangle-Bottema1_23a.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/IsoTriangle-Perimeter_CircumRadius_b.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegHeptagon-Diagonal_Side.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/Triangle-Bottema5_3.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/Triangle-Bottema1_4.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RightTriangle-Bottema1_1a.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_1.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_Mitrinovic_7_44.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_SignPattern_1p_1m_m.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_Bessack_4_2.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_Bessack_1_1.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_Mitrinovic_4_15.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_Bessack_3_3.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC10_ex2a.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_JSC_SUMCracker_19a.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_Bessack_4_4.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_4_30_2.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex3a.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_7_35.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_JSC_SUMCracker_14e.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex4c.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_4_23.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_4_19.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_8_3.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_3_28.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC05_Weierstrass_2_LHS.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_4_29_2.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_4_22a.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex4j.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC05_Weierstrass_2_LHS.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex3b.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_8_4.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_4_14.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_4_29_1.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_4_22b.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_3_28.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints/mod7_POMC_hints.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints/mod5_POMC_hints.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints/escape25_POMC_no_hints.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints/mod5_POMC_no_hints.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/past/geom_offspring_0.499_PRAY.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/past",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/past/huge_runtime_PRAY.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/past",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/past/geom_offspring_0.5_PRAY.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/past",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/firewire.t2.c_Iteration1_Lasso_4-lexTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/sas2.t2.c_Iteration6_Lasso_4-lexTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/toeplz.c.i.toeplz.pl.t2.fixed.t2.c_Iteration10_Loop_3-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/matrixsqrt.t2.c_Iteration12_Loop_3-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/ex11.t2.c_Iteration1_Lasso_4-lexTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/n_firewire_instrumented-PP.t2.c_Iteration1_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/bf20.t2.c_Iteration1_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/elmhes.t2.c_Iteration6_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/bf10.t2.c_Iteration1_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/pentagon.t2.c_Iteration14_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/TelAviv-Amir-Minimum_true-termination.c_Iteration1_Lasso_3-lexTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/LeeJonesBen-Amram-2001POPL-Ex3_true-termination.c_Iteration3_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/GulwaniJainKoskinen-2009PLDI-Fig1_true-termination.c_Iteration1_Lasso_3-lexTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/LeeJonesBen-Amram-2001POPL-Ex5_true-termination.c_Iteration2_Loop_6-phaseTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/joey_false-termination.c_Iteration2_Loop_5-phaseTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/LeeJonesBen-Amram-2001POPL-Ex5_true-termination.c_Iteration2_Loop_2-pieceTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/KroeningSharyginaTsitovichWintersteiger-2010CAV-Fig1_true-termination.c_Iteration1_Lasso_2-pieceTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/BrockschmidtCookFuhs-2013CAV-Fig1_true-termination.c_Iteration2_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/Ben-Amram-2010LMCS-Ex2.3_true-termination.c_Iteration1_Lasso_4-lexTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/KroeningSharyginaTsitovichWintersteiger-2010CAV-Fig1_true-termination.c_Iteration1_Lasso_2-nestedTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/SantaBarbara01.bpl_Iteration1_Lasso_2-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Wellington.bpl_Iteration1_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Gulwani.bpl_Iteration1_Lasso_6-phaseTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Loop_2-nestedTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Braverman-2006CAV-Ex1-int.bpl_Iteration1_Loop_4-phaseTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/CookSeeZuleger-2013TACAS-Fig3.bpl_Iteration1_Loop_3-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/SyntaxSupportDivision1.bpl_Iteration1_Lasso_7-nestedTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Lasso_2-nestedTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Canberra.bpl_Iteration1_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Rotation02.bpl_Iteration1_Lasso_4-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_BugFreshConstantInSSA.bpl_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "unsat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_doubleLoopUniformIterations.bpl_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "unsat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_LexIndexValue-Pointer-Reduced.bpl_Iteration1_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_ShortCircuit-SideEffect-SwitchStatement-Unsafe.c_Iteration1_2.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_threadpooling_out2.mover.bpl_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_agroce_minmax.c_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_BeyerHenzingerMajumdarRybalchenko-PLDI2007-Figure4.bpl_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_pcatest0.bpl_Iteration1_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_SAS09.c_Iteration3_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_PrefixIncrementDecrement.c_Iteration3_1.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_14.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_13.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_6.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_15.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_3.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_18.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_9.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_16.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_4.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_12.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill.05.redlog_global_15.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_slope.01.seq_lazy_lemmas_global_9.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_1d_plain.01.seq_lazy_linear_enc_lemmas_global_11.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_1d_plain.10.seq_lazy_linear_enc_lemmas_global_7.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_slope.04.seq_lazy_linear_enc_lemmas_global_5.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill.10.seq_lazy_linear_enc_global_2.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_slope.03.seq_lazy_linear_enc_lemmas_global_9.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill.01.seq_lazy_linear_enc_global_15.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill.03.seq_lazy_global_3.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill.04.seq_lazy_linear_enc_lemmas_global_3.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "kissing/kissing_3_13.smt2",
+   "family": "kissing",
+   "expected": "unsat"
+  },
+  {
+   "path": "kissing/kissing_3_6.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_18.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_2.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_15.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_3_8.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_7.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_9.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_1.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_21.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0019.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/KM2/ArthanKM2-chunk-0003.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/M2/ArthanM2-chunk-0007.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1C/Arthan1C-chunk-0005.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/KM2/ArthanKM2-chunk-0002.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/KM2/ArthanKM2-chunk-0007.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0022.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0017.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1C/Arthan1C-chunk-0007.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/M2/ArthanM2-chunk-0013.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0201.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0115.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0241.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0199.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0074.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0064.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0283.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0113.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0063.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0333.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0016.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0051.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0033.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0029.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0014.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0019.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0042.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0020.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0015.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0018.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/IL/L/Chua-1-IL-L-chunk-0045.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/VC1/U/Chua-1-VC1-U-chunk-0063.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/IL/U/Chua-1-IL-U-chunk-0031.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/IL/L/Chua-1-IL-L-chunk-0134.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/VC1/L/Chua-2-VC1-L-chunk-0053.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/IL/L/Chua-2-IL-L-chunk-0097.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/IL/U/Chua-2-IL-U-chunk-0008.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/VC2/U/Chua-2-VC2-U-chunk-0077.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/VC2/L/Chua-2-VC2-L-chunk-0037.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/VC2/L/Chua-1-VC2-L-chunk-0047.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0027.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0022.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0015.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0032.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0029.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0009.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0025.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0035.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0018.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0014.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0147.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0060.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0150.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0201.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0159.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0017.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0169.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0101.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0031.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0053.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0012.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0009.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0013.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0007.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0047.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0021.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0040.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0046.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0039.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0054.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0027.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0036.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0019.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0048.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0638.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/problem/2/weak/atan-problem-2-weak-chunk-0106.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/atan-vega-3-chunk-0545.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/atan/problem/1/atan-problem-1-chunk-0099.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0194.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0694.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0603.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/atan-vega-3-chunk-0465.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0595.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/atan/problem/2/weak2/atan-problem-2-weak2-chunk-0096.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0048.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0041.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0045.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0036.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0052.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0046.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0039.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0044.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0038.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0070.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0102.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0087.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0072.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0107.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0091.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0025.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0066.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0062.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0020.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0024.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0042.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/12/cos-problem-12-chunk-0006.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0022.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0020.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0014.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0028.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0033.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0037.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/exp-problem-10-3-chunk-0165.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0118.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0096.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0156.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/weak/exp-problem-10-3-weak-chunk-0225.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/exp-problem-10-3-chunk-0037.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0355.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/weak/exp-problem-10-3-weak-chunk-0022.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0279.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0329.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/heartdipole/heartdipole-chunk-0047.smt2",
+   "family": "meti-tarski/heartdipole",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/log/fun-ineq/log-fun-ineq-g-chunk-0032.smt2",
+   "family": "meti-tarski/log",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/log/fun-ineq/log-fun-ineq-g-chunk-0034.smt2",
+   "family": "meti-tarski/log",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/log/fun-ineq/log-fun-ineq-g-chunk-0036.smt2",
+   "family": "meti-tarski/log",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/sqrt43-int/3vars/polypaver-sqrt43-int-3vars-chunk-0106.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0291.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0249.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0517.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0495.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/sqrt43-int/3vars/polypaver-sqrt43-int-3vars-chunk-0078.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0497.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/sqrt43-int/4vars/polypaver-sqrt43-int-4vars-chunk-0031.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/sqrt43-int/3vars/polypaver-sqrt43-int-3vars-chunk-0045.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0357.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0224.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/7/weak2/sin-problem-7-weak2-chunk-0098.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sin/344/3/sin-344-3-chunk-0026.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/7/sin-problem-7-chunk-0183.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0084.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/7/sin-problem-7-chunk-0165.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0634.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0440.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/8/sin-problem-8-chunk-0029.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0305.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0123.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0649.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/problem/sqrt-problem-Melquiond2-chunk-0034.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/problem/sqrt-problem-Melquiond2-chunk-0091.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0131.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0409.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0675.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/problem/13/sqrt1/sqrt-problem-13-sqrt1-chunk-0073.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0641.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0044.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-2-all-14.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-34.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-33.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-5-all-27.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-3-all-21.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-56.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-42.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-32.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-16.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-19.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  }
+ ],
+ "heldout": [
+  {
+   "path": "20161105-Sturm-MBO/mbo_E28.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E5E17.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E4E27.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E9E13.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E3E18.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E9E23.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E5E25.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E2E19.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E17E26.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MBO/mbo_E10.smt2",
+   "family": "20161105-Sturm-MBO",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_07.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_08.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_09.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "sat"
+  },
+  {
+   "path": "20161105-Sturm-MGC/mgc_06.smt2",
+   "family": "20161105-Sturm-MGC",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0056c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0082a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0024a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0061c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0006a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0066c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0066a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0082c.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "unsat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0078a.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20180501-Economics-Mulligan/MulliganEconomicsModel0016e.smt2",
+   "family": "20180501-Economics-Mulligan",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegDecagon-Diagonal_Side.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/IsoTriangle-Bottema8_1b.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegNonagon-Diagonal_Side.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/IsoRightTriangle-Bottema5_3b.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/TriangleInequality_Triangle-a+b_c.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/IsoTriangle-Perimeter_CircumRadius_a.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RightTriangle-Bottema11_20a.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/PythagoreanGeneralization_Triangle-aa+bb_cc.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegHexagon-Diagonal_Side.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20211101-Geogebra/RegHexagon-ProductDiagonals_CircumRadius.smt2",
+   "family": "20211101-Geogebra",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_JSC_SUMCracker_19b.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_SignPattern_1p_2m_m.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_Mitrinovic_4_15m.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC10_ex4a.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_Bessack_2_0.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_SignPattern_5p_1nneg_4m_1w_p.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_SignPattern_Lemma4b.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_Mitrinovic_11_1b.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_SignPattern_Lemma4a.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Polynomial_Proof_Calls/ProveIneq_ISSAC05_SignPattern_1p_3m_m.smt2",
+   "family": "20220314-Uncu/Polynomial_Proof_Calls",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex3f.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex3c.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC05_AmerMathMonthly10347LHSa.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC05_AmerMathMonthly10347RHS.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC05_Bessack_5_m1.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex4e.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_3_29.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex4b.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_ISSAC10_ex1f.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications/BDC_ProveIneq_Mitrinovic_4_3.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Basic_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC05_Bessack_3_m1.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex3f.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC05_LevinRHSc.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex1f.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_Mitrinovic_4_1.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_JSC_SUMCracker_14e.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC05_Bessack_4_m1.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "unsat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex1e.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex4h.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications/DDC_ProveIneq_ISSAC10_ex4i.smt2",
+   "family": "20220314-Uncu/Rational_Function_Proof_Calls_With_Disjunctive_Denominator_Simplifications",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints/escape25_POMC_hints.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints/mod7_POMC_no_hints.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/past/huge_runtime_tiny_probs_PRAY.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/past",
+   "expected": "sat"
+  },
+  {
+   "path": "20240407-pPDA-Chiari-Pontiggia-Winkler/past/sqrt2by2_bern_PRAY.smt2",
+   "family": "20240407-pPDA-Chiari-Pontiggia-Winkler/past",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/p-46.t2.c_Iteration2_Loop_6-phaseTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/sumit.t2.c_Iteration1_Lasso_3-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/elmhes.c.i.elmhes.pl.t2.fixed.t2.c_Iteration6_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/polyrank4.t2.c_Iteration3_Loop_3-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/seq2.t2.c_Iteration1_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/firewire.t2.c_Iteration1_Lasso_5-phaseTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/fuhs-inflasso.t2.c_Iteration2_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/eric2.t2.c_Iteration11_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/polyrank5.t2.c_Iteration1_Loop_5-phaseTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/CooperatingT2/byron-2.t2.c_Iteration3_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/CooperatingT2",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/Toulouse-BranchesToLoop_true-termination.c_Iteration1_Lasso_3-pieceTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/LeeJonesBen-Amram-2001POPL-Ex5_true-termination.c_Iteration2_Lasso_5-nestedTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/LeeJonesBen-Amram-2001POPL-Ex5_true-termination.c_Iteration2_Lasso_4-nestedTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/KroeningSharyginaTsitovichWintersteiger-2010CAV-Fig1_true-termination.c_Iteration1_Lasso_7-nestedTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/BradleyMannaSipma-2005ICALP-Fig1_true-termination.c_Iteration1_Lasso_6-nestedTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/gcd1_true-termination.c_Iteration3_Loop_4-pieceTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/CookSeeZuleger-2013TACAS-Fig7a_true-termination.c_Iteration1_Loop_3-lexTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/KroeningSharyginaTsitovichWintersteiger-2010CAV-Fig1_true-termination.c_Iteration1_Lasso_6-nestedTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/NoriSharma-2013FSE-Fig7_true-termination.c_Iteration1_Loop_4-phaseTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/SV-COMP/NoriSharma-2013FSE-Fig7_true-termination.c_Iteration1_Loop_5-phaseTemplate.smt2",
+   "family": "LassoRanker/SV-COMP",
+   "expected": "sat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Loop_2-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Loop_affineTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Loop_6-phaseTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Lasso_2-lexTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Lobnya-Boolean-Reordered.bpl_Iteration1_Lasso_3-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Lasso_3-phaseTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Collatz.bpl_Iteration1_Loop_6-nestedTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/2013POPL-BenAmGen-Ex3.20.bpl_Iteration1_Loop_3-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Canberra.bpl_Iteration1_Lasso_4-pieceTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "LassoRanker/Ultimate/Braverman-2006CAV-Ex1-int.bpl_Iteration1_Lasso_4-phaseTemplate.smt2",
+   "family": "LassoRanker/Ultimate",
+   "expected": "unsat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_InvariantSynthesis_Disjunctive02.bpl_Iteration1_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_TestIntegerDivision01.c_Iteration3_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "unsat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_ImpulseTest.bpl_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_PostfixIncrementDecrement.c_Iteration3_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "unsat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_agroce_minmax.c_Iteration2_1.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_BugSubstitution.bpl_Iteration3_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_SAS09.c_Iteration2_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_PrefixIncrementDecrement.c_Iteration3_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_ShortCircuit-SideEffect-FunctionCallExpression-Safe.c_Iteration1_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "UltimateAutomizer/InVarSynth_ShortCircuit-SideEffect-SwitchStatement-Unsafe.c_Iteration1_0.smt2",
+   "family": "UltimateAutomizer",
+   "expected": "sat"
+  },
+  {
+   "path": "hong/hong_10.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_17.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_7.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_1.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_2.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_5.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_20.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_11.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_19.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hong/hong_8.smt2",
+   "family": "hong",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_plain.02.seq_lazy_linear_enc_global_7.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill_simple.03.seq_lazy_global_1.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_plain.04.seq_lazy_lemmas_global_4.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_slope.05.seq_lazy_global_4.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_plain.04.qfree_global_13.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_1d_plain.04.seq_lazy_linear_enc_global_1.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_plain.02.seq_lazy_global_7.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill_simple.04.seq_lazy_linear_enc_lemmas_global_4.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill.04.seq_lazy_linear_enc_lemmas_global_8.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "hycomp/ball_count_2d_hill_simple.10.seq_lazy_linear_enc_global_1.smt2",
+   "family": "hycomp",
+   "expected": "unsat"
+  },
+  {
+   "path": "kissing/kissing_4_19.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_17.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_3_1.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_3_7.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_5.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_2_4.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_4_16.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_2_7.smt2",
+   "family": "kissing",
+   "expected": "unsat"
+  },
+  {
+   "path": "kissing/kissing_4_20.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "kissing/kissing_2_1.smt2",
+   "family": "kissing",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/KM2/ArthanKM2-chunk-0008.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0023.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0018.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1C/Arthan1C-chunk-0004.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/KM2/ArthanKM2-chunk-0005.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0021.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1C/Arthan1C-chunk-0003.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/M2/ArthanM2-chunk-0010.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1A/Arthan1A-chunk-0020.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Arthan/1C/Arthan1C-chunk-0008.smt2",
+   "family": "meti-tarski/Arthan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0167.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0086.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0066.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0248.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0050.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0276.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0146.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0261.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0289.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CMOS/CMOS-opamp-chunk-0090.smt2",
+   "family": "meti-tarski/CMOS",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0039.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0012.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0010.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0025.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0038.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0035.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0036.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0011.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0013.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/CONVOI2/CONVOI2-chunk-0017.smt2",
+   "family": "meti-tarski/CONVOI2",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/VC1/U/Chua-1-VC1-U-chunk-0073.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/VC1/U/Chua-2-VC1-U-chunk-0042.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/VC2/U/Chua-1-VC2-U-chunk-0118.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/IL/U/Chua-2-IL-U-chunk-0042.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/IL/U/Chua-2-IL-U-chunk-0064.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/IL/U/Chua-2-IL-U-chunk-0104.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/VC1/L/Chua-2-VC1-L-chunk-0086.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/IL/U/Chua-2-IL-U-chunk-0051.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/1/IL/L/Chua-1-IL-L-chunk-0062.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Chua/2/VC2/U/Chua-2-VC2-U-chunk-0057.smt2",
+   "family": "meti-tarski/Chua",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0011.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0028.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0013.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0003.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0036.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0024.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0040.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0002.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0039.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Lyapunov/Lyapunov1a-chunk-0012.smt2",
+   "family": "meti-tarski/Lyapunov",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0081.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0059.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0024.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0062.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0251.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0175.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0151.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0022.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0203.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/Nichols-Plot/Inverted-Pendulum/Nichols-Plot-Inverted-Pendulum-Fails-1-6-chunk-0176.smt2",
+   "family": "meti-tarski/Nichols-Plot",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0011.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0008.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0005.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/RL-high-pass-circuit/RL-high-pass-circuit-gain-chunk-0010.smt2",
+   "family": "meti-tarski/RL-high-pass-circuit",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0040.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0017.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0013.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0053.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0052.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0043.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0026.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0028.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/asin/8/vars4/asin-8-vars4-chunk-0020.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/asin/8/asin-8-chunk-0023.smt2",
+   "family": "meti-tarski/asin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/atan-vega-3-chunk-0106.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0155.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/atan-vega-3-chunk-0478.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0451.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0424.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/atan-vega-3-chunk-0057.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/problem/2/atan-problem-2-chunk-0017.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0214.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/vega/3/weak/atan-vega-3-weak-chunk-0640.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/atan/problem/1/atan-problem-1-chunk-0039.smt2",
+   "family": "meti-tarski/atan",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0043.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0047.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0038.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0050.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0042.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0049.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/bottom-plate-mixer/bottom-plate-mixer-chunk-0054.smt2",
+   "family": "meti-tarski/bottom-plate-mixer",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0101.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0060.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0061.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0074.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0015.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0079.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/weak/cbrt-problem-3-weak-chunk-0110.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0019.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0064.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cbrt/3/cbrt-problem-3-chunk-0033.smt2",
+   "family": "meti-tarski/cbrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0023.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0018.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0024.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0035.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0039.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0027.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0048.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/12/cos-problem-12-chunk-0007.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/cos/problem/5/cos-problem-5-chunk-0044.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/cos/3410/cos-3410-b-chunk-0019.smt2",
+   "family": "meti-tarski/cos",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0047.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/weak/exp-problem-10-3-weak-chunk-0232.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/weak/exp-problem-10-3-weak-chunk-0073.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/weak/exp-problem-10-3-weak-chunk-0146.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0205.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0177.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0311.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0314.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/3/weak/exp-problem-10-3-weak-chunk-0016.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/exp/problem/10/2/exp-problem-10-2-chunk-0304.smt2",
+   "family": "meti-tarski/exp",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/log/fun-ineq/log-fun-ineq-g-chunk-0033.smt2",
+   "family": "meti-tarski/log",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/log/fun-ineq/log-fun-ineq-g-chunk-0030.smt2",
+   "family": "meti-tarski/log",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/log/fun-ineq/log-fun-ineq-g-chunk-0035.smt2",
+   "family": "meti-tarski/log",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0093.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0464.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0343.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-exp-3d/polypaver-bench-exp-3d-chunk-0075.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0098.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0225.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0358.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0070.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-sqrt-3d/polypaver-bench-sqrt-3d-chunk-0087.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/polypaver/bench-exp-3d/polypaver-bench-exp-3d-chunk-0074.smt2",
+   "family": "meti-tarski/polypaver",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0506.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0245.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0199.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/7/sin-problem-7-chunk-0017.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/7/weak/sin-problem-7-weak-chunk-0166.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0202.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0105.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/problem/7/sin-problem-7-chunk-0202.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0537.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sin/cos/sin-cos-346-b-chunk-0632.smt2",
+   "family": "meti-tarski/sin",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/7/sqrt-1mcosq-7-chunk-0219.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0055.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/problem/sqrt-problem-Melquiond2-chunk-0083.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0568.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0452.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0364.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0239.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/1mcosq/8/sqrt-1mcosq-8-chunk-0597.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "meti-tarski/sqrt/problem/13/sqrt-problem-13-chunk-0015.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "sat"
+  },
+  {
+   "path": "meti-tarski/sqrt/problem/sqrt-problem-Melquiond3-chunk-0024.smt2",
+   "family": "meti-tarski/sqrt",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-5.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-21.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-4-all-31.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-36.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-43.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-2-all-25.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  },
+  {
+   "path": "zankl/matrix-1-all-4.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-20.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-13.smt2",
+   "family": "zankl",
+   "expected": "sat"
+  },
+  {
+   "path": "zankl/matrix-1-all-47.smt2",
+   "family": "zankl",
+   "expected": "unsat"
+  }
+ ],
+ "dropped": [],
+ "labelled_only": true,
+ "unlabelled_skipped": {
+  "20161105-Sturm-MBO": 15,
+  "20170501-Heizmann-UltimateInvariantSynthesis": 68,
+  "2019-ezsmt/bouncingBall": 5,
+  "2019-ezsmt/generator": 8,
+  "2019-ezsmt/reverseFolding": 50,
+  "20200911-Pine": 245,
+  "20211101-Geogebra": 3,
+  "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_hints": 4,
+  "20240407-pPDA-Chiari-Pontiggia-Winkler/certificate_no_hints": 4,
+  "20240407-pPDA-Chiari-Pontiggia-Winkler/past": 1,
+  "LassoRanker/CooperatingT2": 256,
+  "LassoRanker/SV-COMP": 158,
+  "LassoRanker/Ultimate": 138,
+  "hycomp": 333,
+  "zankl": 73
+ },
+ "both_oracles": true
+}
