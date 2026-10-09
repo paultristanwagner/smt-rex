@@ -1,0 +1,9 @@
+[package]
+name = "smtrex-term"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+smtrex-core.workspace = true
+rustc-hash.workspace = true
