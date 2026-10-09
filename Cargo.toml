@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["core", "sat", "term", "theory"]
+members = ["core", "sat", "term", "theory", "poly"]
 
 [workspace.package]
 edition = "2021"
@@ -12,6 +12,7 @@ smtrex-core = { path = "core" }
 smtrex-term = { path = "term" }
 smtrex-sat = { path = "sat" }
 smtrex-theory = { path = "theory" }
+smtrex-poly = { path = "poly" }
 num-bigint = "0.4"
 num-rational = "0.4"
 num-integer = "0.1"

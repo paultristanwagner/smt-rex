@@ -1,0 +1,18 @@
+[package]
+name = "smtrex-poly"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "Exact polynomial algebra for SMT-Rex: factorisation over Z, real root isolation, real algebraic numbers, multivariate resultants"
+
+[dependencies]
+num-bigint.workspace = true
+num-rational.workspace = true
+num-traits.workspace = true
+num-integer.workspace = true
+
+# Case generator for the sympy differential test (tests/sympy/sympy_diff.py). It lives under
+# tests/ because the repository's .gitignore excludes examples/ directories.
+[[example]]
+name = "sympy_cases"
+path = "tests/sympy/cases.rs"
