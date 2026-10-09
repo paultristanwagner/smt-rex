@@ -1,0 +1,17 @@
+[package]
+name = "smtrex-cli"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "SMT-Rex: the smt-rex command-line solver and interactive prompt"
+
+[[bin]]
+name = "smt-rex"
+path = "src/main.rs"
+
+[dependencies]
+smtrex-core.workspace = true
+smtrex-sat.workspace = true
+smtrex-smt.workspace = true
+rustyline.workspace = true
+ctrlc.workspace = true
