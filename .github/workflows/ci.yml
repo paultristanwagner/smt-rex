@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: fmt, clippy, tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@7e38f4b43b4db5c8dd498af069a4f6196df1d067 # master
+        with:
+          toolchain: 1.95.0
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+      - run: cargo fmt --all --check
+      - run: cargo clippy --all-targets --all-features -- -D warnings
+      - run: cargo test --release --all
+      - run: cargo build --release --bin smt-rex
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: smt-rex
+          path: target/release/smt-rex
+          retention-days: 3
+
+  # Random scripts in every logic against z3; any disagreement, unknown or error fails.
+  fuzz:
+    name: fuzz against z3
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: smt-rex
+          path: target/release
+      - run: chmod +x target/release/smt-rex
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
+      - name: z3 4.16 (the Nix store path in bench/runpod/store-paths.txt)
+        run: |
+          z3=$(awk '$1 == "z3" { print $2 }' bench/runpod/store-paths.txt)
+          nix-store -r "$z3"
+          echo "Z3=$z3/bin/z3" >> "$GITHUB_ENV"
+      - name: fuzz.py
+        run: |
+          for logic in QF_UF QF_LRA QF_LIA QF_BV; do
+            python3 bench/fuzz.py --logic "$logic" --count 1000 --jobs 4
+          done
+          python3 bench/fuzz.py --logic QF_NRA --count 200 --timeout 20 --jobs 4
+          for logic in QF_LRA QF_LIA; do
+            python3 bench/fuzz.py --logic "$logic" --opt --count 500 --jobs 4
+          done
+      - if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: fuzz-failures
+          path: bench/results/fuzz-*.smt2
+          if-no-files-found: ignore
+
+  # Every unsat answer on random QF_UF and QF_LRA scripts must come with a valid Alethe proof.
+  proofs:
+    name: Alethe proofs checked by Carcara
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CARCARA_REV: 96c00843eb157cb475796483b2ed30a51fb82852
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: smt-rex
+          path: target/release
+      - run: chmod +x target/release/smt-rex
+      - id: carcara
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/carcara
+          key: carcara-${{ env.CARCARA_REV }}-ubuntu-24.04-rust-1.95.0
+      - if: steps.carcara.outputs.cache-hit != 'true'
+        uses: dtolnay/rust-toolchain@7e38f4b43b4db5c8dd498af069a4f6196df1d067 # master
+        with:
+          toolchain: 1.95.0
+      - name: Build Carcara
+        if: steps.carcara.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends m4   # for GMP
+          cargo install --locked --root ~/carcara carcara \
+            --git https://github.com/ufmg-smite/carcara --rev "$CARCARA_REV"
+      - name: proofcheck.py
+        run: |
+          export CARCARA="$HOME/carcara/bin/carcara"
+          python3 bench/proofcheck.py random --count 150
+          python3 bench/proofcheck.py random --count 150 --logic QF_LRA
+      - if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: proof-failures
+          path: bench/results/proof-fail-*.smt2
+          if-no-files-found: ignore
