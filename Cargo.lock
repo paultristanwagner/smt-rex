@@ -85,3 +85,13 @@ dependencies = [
  "rustc-hash",
  "smtrex-core",
 ]
+
+[[package]]
+name = "smtrex-theory"
+version = "0.1.0"
+dependencies = [
+ "rustc-hash",
+ "smallvec",
+ "smtrex-core",
+ "smtrex-term",
+]

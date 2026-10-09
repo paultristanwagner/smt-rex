@@ -1,0 +1,11 @@
+[package]
+name = "smtrex-theory"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+smtrex-core.workspace = true
+smtrex-term.workspace = true
+rustc-hash.workspace = true
+smallvec.workspace = true
