@@ -85,7 +85,10 @@ pub fn tseitin(f: &Formula) -> Vec<Vec<Literal>> {
                     self.clauses.push(vec![(av, !ap), (bv, !bp), hp]);
                     (h, true)
                 }
-                Formula::Eq { .. } | Formula::Cmp { .. } | Formula::Objective { .. } => {
+                Formula::Eq { .. }
+                | Formula::Cmp { .. }
+                | Formula::PolyCmp { .. }
+                | Formula::Objective { .. } => {
                     unreachable!("tseitin is only for propositional formulas")
                 }
             }
@@ -147,7 +150,10 @@ mod tests {
                 Formula::Or(xs) => xs.iter().any(|x| eval(x, a)),
                 Formula::Implies(x, y) => !eval(x, a) || eval(y, a),
                 Formula::Iff(x, y) => eval(x, a) == eval(y, a),
-                Formula::Eq { .. } | Formula::Cmp { .. } | Formula::Objective { .. } => {
+                Formula::Eq { .. }
+                | Formula::Cmp { .. }
+                | Formula::PolyCmp { .. }
+                | Formula::Objective { .. } => {
                     unreachable!()
                 }
             }

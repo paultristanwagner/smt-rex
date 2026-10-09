@@ -65,7 +65,7 @@ impl Session {
                         return writeln!(
                             out,
                             "{} -n needs a positive number",
-                            self.style.error("usage:")
+                            self.style.usage("usage:")
                         )
                     }
                 }
@@ -76,7 +76,7 @@ impl Session {
             return writeln!(
                 out,
                 "{} allsat [-n <limit>] <formula>",
-                self.style.error("usage:")
+                self.style.usage("usage:")
             );
         }
         let Some(f) = self.parse(input, Atoms::Prop, out)? else {

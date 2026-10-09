@@ -46,14 +46,18 @@ impl Style {
     pub fn sat(&self, s: &str) -> String {
         self.paint("1;32", s)
     }
+    /// Magenta, not red: unsat is an answer, not an error.
     pub fn unsat(&self, s: &str) -> String {
-        self.paint("1;31", s)
+        self.paint("1;35", s)
     }
     pub fn unknown(&self, s: &str) -> String {
         self.paint("1;33", s)
     }
     pub fn error(&self, s: &str) -> String {
         self.paint("31", s)
+    }
+    pub fn usage(&self, s: &str) -> String {
+        self.paint("1", s)
     }
     pub fn dim(&self, s: &str) -> String {
         self.paint("90", s)

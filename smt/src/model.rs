@@ -16,7 +16,7 @@ use num_bigint::{BigInt, BigUint, Sign};
 use num_traits::{One, Signed, Zero};
 use rustc_hash::FxHashMap;
 use smtrex_core::Rational;
-use smtrex_poly::RealAlgebraic;
+pub use smtrex_poly::RealAlgebraic;
 use smtrex_term::TermId;
 use smtrex_theory::Euf;
 

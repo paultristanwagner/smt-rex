@@ -53,6 +53,9 @@ smt-rex> smt QF_LRA (x < 3) & (max(x))
 sat  (24 µs)
   max x: no maximum (supremum 3, never reached)
   x=2
+smt-rex> smt QF_NRA (x^2 = 2) & (x > 0)
+sat  (382 µs)
+  x≈1.414214 (root 2 of x^2 - 2)
 ```
 
 ## Why trust an answer

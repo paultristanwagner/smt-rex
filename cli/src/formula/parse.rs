@@ -1,4 +1,4 @@
-use super::{Atoms, Formula, Linear, Rel, Term};
+use super::{Atoms, Formula, Linear, Monomial, Poly, Rel, Term};
 use smtrex_core::Rational;
 
 /// A syntax error at byte offset `at` of the input.
@@ -42,13 +42,15 @@ enum Tok {
     Iff,
     Eq,
     Neq,
-    // Arithmetic only (QF_LRA). Numbers keep their source text for error messages.
+    // Arithmetic only. Numbers keep their source text for error messages.
     Num(Rational, String),
     /// A number directly followed by a variable, as in `2x`: implicit multiplication.
     Coef(Rational, String),
     Plus,
     Minus,
     Star,
+    Slash,
+    Caret,
     Le,
     Lt,
     Ge,
@@ -73,6 +75,8 @@ impl Tok {
             Tok::Plus => "'+'".into(),
             Tok::Minus => "'-'".into(),
             Tok::Star => "'*'".into(),
+            Tok::Slash => "'/'".into(),
+            Tok::Caret => "'^'".into(),
             Tok::Le => "'<='".into(),
             Tok::Lt => "'<'".into(),
             Tok::Ge => "'>='".into(),
@@ -92,8 +96,9 @@ fn is_arith_ident_char(c: char) -> bool {
 }
 
 /// The number at the start of `rest` (`42`, `0.8`, `.5`, `5.`, `1/2`) and its length in bytes,
-/// or `None` if `rest` does not start with one.
-fn lex_number(rest: &str) -> Option<Result<(Rational, usize), String>> {
+/// or `None` if `rest` does not start with one. Without `fraction`, `3/2` is `3` (an exponent:
+/// `y^3/2` is `y^3 / 2`).
+fn lex_number(rest: &str, fraction: bool) -> Option<Result<(Rational, usize), String>> {
     let b = rest.as_bytes();
     let digits = |from: usize| from + b[from..].iter().take_while(|c| c.is_ascii_digit()).count();
     let int_end = digits(0);
@@ -113,7 +118,10 @@ fn lex_number(rest: &str) -> Option<Result<(Rational, usize), String>> {
     };
     let q = Rational::parse_decimal(&text).expect("digits are a decimal");
     // A fraction: integer '/' integer, with no spaces.
-    if end == int_end && b.get(end) == Some(&b'/') && b.get(end + 1).is_some_and(u8::is_ascii_digit)
+    if fraction
+        && end == int_end
+        && b.get(end) == Some(&b'/')
+        && b.get(end + 1).is_some_and(u8::is_ascii_digit)
     {
         let den_end = digits(end + 1);
         let den = Rational::parse_decimal(&rest[end + 1..den_end]).expect("digits");
@@ -126,12 +134,17 @@ fn lex_number(rest: &str) -> Option<Result<(Rational, usize), String>> {
 }
 
 fn lex(input: &str, atoms: Atoms) -> Result<Vec<(Tok, usize)>, ParseError> {
-    let arith = atoms == Atoms::Arith;
+    let arith = atoms.arithmetic();
     let mut out = Vec::new();
     let mut it = input.char_indices().peekable();
     while let Some(&(i, c)) = it.peek() {
         let rest = &input[i..];
-        let number = if arith { lex_number(rest) } else { None };
+        let exponent = matches!(out.last(), Some((Tok::Caret, _)));
+        let number = if arith {
+            lex_number(rest, !exponent)
+        } else {
+            None
+        };
         let (tok, len) = if c.is_whitespace() {
             it.next();
             continue;
@@ -152,11 +165,6 @@ fn lex(input: &str, atoms: Atoms) -> Result<Vec<(Tok, usize)>, ParseError> {
                 .find(|ch: char| !is_arith_ident_char(ch))
                 .unwrap_or(rest.len());
             (Tok::Ident(rest[..end].to_string()), end)
-        } else if arith && c == '/' {
-            return Err(ParseError {
-                message: "'/' only writes a fraction of two integers, as in 1/2x".into(),
-                at: i,
-            });
         } else if !arith && is_ident_char(c) {
             let end = rest
                 .find(|ch: char| !is_ident_char(ch))
@@ -187,6 +195,8 @@ fn lex(input: &str, atoms: Atoms) -> Result<Vec<(Tok, usize)>, ParseError> {
             ("+", Tok::Plus, true),
             ("-", Tok::Minus, true),
             ("*", Tok::Star, true),
+            ("/", Tok::Slash, true),
+            ("^", Tok::Caret, true),
         ]
         .into_iter()
         .find(|(s, _, arith_only)| (arith || !arith_only) && rest.starts_with(s))
@@ -375,7 +385,7 @@ impl Parser {
                 let rhs = self.term()?;
                 Ok(Formula::Eq { lhs, rhs, equal })
             }
-            Atoms::Arith => match self.peek() {
+            Atoms::Arith | Atoms::Int | Atoms::Poly => match self.peek() {
                 Some(Tok::Ident(n)) if n == "true" || n == "false" => {
                     let b = n == "true";
                     self.pos += 1;
@@ -396,6 +406,12 @@ impl Parser {
         if !is_objective {
             return self.comparison();
         }
+        if self.atoms == Atoms::Poly {
+            return Err(ParseError {
+                message: "min(...) and max(...) need QF_LRA or QF_LIA".into(),
+                at: self.here(),
+            });
+        }
         let maximize = matches!(self.peek(), Some(Tok::Ident(n)) if n.eq_ignore_ascii_case("max"));
         self.pos += 2;
         let list = std::mem::replace(&mut self.list, false);
@@ -406,9 +422,21 @@ impl Parser {
         Ok(Formula::Objective { maximize, term })
     }
 
-    /// `linear REL linear`.
+    /// `linear REL linear`, or `poly REL poly` in QF_NRA.
     fn comparison(&mut self) -> Result<Formula, ParseError> {
+        if self.atoms == Atoms::Poly {
+            let lhs = self.poly()?;
+            let rel = self.relation()?;
+            let rhs = self.poly()?;
+            return Ok(Formula::PolyCmp { lhs, rel, rhs });
+        }
         let lhs = self.linear()?;
+        let rel = self.relation()?;
+        let rhs = self.linear()?;
+        Ok(Formula::Cmp { lhs, rel, rhs })
+    }
+
+    fn relation(&mut self) -> Result<Rel, ParseError> {
         let rel = match self.peek() {
             Some(Tok::Le) => Rel::Le,
             Some(Tok::Lt) => Rel::Lt,
@@ -419,13 +447,12 @@ impl Parser {
             _ => return self.error("'+', '-' or a comparison (<=, <, >=, >, =, !=)"),
         };
         self.pos += 1;
-        let rhs = self.linear()?;
-        Ok(Formula::Cmp { lhs, rel, rhs })
+        Ok(rel)
     }
 
-    fn linear(&mut self) -> Result<Linear, ParseError> {
-        let mut lin = Linear::default();
-        self.summand(&mut lin, Rational::one())?;
+    /// The summands of a sum, each with its sign.
+    fn sum(&mut self) -> Result<Vec<(Monomial, Rational)>, ParseError> {
+        let mut out = vec![self.summand(Rational::one())?];
         loop {
             let sign = match self.peek() {
                 Some(Tok::Plus) => Rational::one(),
@@ -436,63 +463,116 @@ impl Parser {
                 break;
             }
             self.pos += 1;
-            self.summand(&mut lin, sign)?;
+            out.push(self.summand(sign)?);
+        }
+        Ok(out)
+    }
+
+    fn linear(&mut self) -> Result<Linear, ParseError> {
+        let mut lin = Linear::default();
+        for (m, c) in self.sum()? {
+            match m.first() {
+                None => lin.constant = &lin.constant + &c,
+                Some((x, _)) => lin.add_var(x, &c),
+            }
         }
         Ok(lin)
     }
 
-    /// One summand of a linear expression, with any leading signs, added to `lin` times `sign`.
-    fn summand(&mut self, lin: &mut Linear, sign: Rational) -> Result<(), ParseError> {
-        let mut sign = sign;
+    fn poly(&mut self) -> Result<Poly, ParseError> {
+        let mut p = Poly::default();
+        for (m, c) in self.sum()? {
+            p.add_term(m, &c);
+        }
+        Ok(p)
+    }
+
+    /// One summand, with any leading signs: a coefficient times a monomial. Outside QF_NRA the
+    /// monomial has at most one variable.
+    fn summand(&mut self, sign: Rational) -> Result<(Monomial, Rational), ParseError> {
+        let mut c = sign;
         while let Some(t @ (Tok::Plus | Tok::Minus)) = self.peek() {
             if *t == Tok::Minus {
-                sign = -sign;
+                c = -c;
             }
             self.pos += 1;
         }
-        match self.peek().cloned() {
-            Some(Tok::Coef(q, _)) => {
-                self.pos += 1;
-                let x = self.variable()?;
-                lin.add_var(&x, &(&sign * &q));
+        let mut m = Monomial::new();
+        if let Some(Tok::Coef(q, _)) = self.peek().cloned() {
+            self.pos += 1;
+            c = &c * &q;
+            self.factor(&mut m, &mut c, true)?;
+        } else {
+            self.factor(&mut m, &mut c, false)?;
+        }
+        loop {
+            if self.eat(&Tok::Star) {
+                self.factor(&mut m, &mut c, false)?;
+            } else if self.eat(&Tok::Slash) {
+                match self.peek().cloned() {
+                    Some(Tok::Num(q, _)) if q.is_zero() => {
+                        return Err(ParseError {
+                            message: "division by zero".into(),
+                            at: self.here(),
+                        })
+                    }
+                    Some(Tok::Num(q, _)) => {
+                        self.pos += 1;
+                        c = &c / &q;
+                    }
+                    _ => return self.error("a number to divide by"),
+                }
+            } else {
+                break;
             }
-            Some(Tok::Num(q, _)) => {
+        }
+        m.sort();
+        Ok((m, c))
+    }
+
+    /// A number (multiplied into `c`) or a variable with an optional exponent (multiplied into
+    /// `m`); only a variable if `variable_only`.
+    fn factor(
+        &mut self,
+        m: &mut Monomial,
+        c: &mut Rational,
+        variable_only: bool,
+    ) -> Result<(), ParseError> {
+        match self.peek().cloned() {
+            Some(Tok::Num(q, _)) if !variable_only => {
                 self.pos += 1;
-                if self.eat(&Tok::Star) {
-                    let x = self.variable()?;
-                    lin.add_var(&x, &(&sign * &q));
-                } else {
-                    lin.constant = &lin.constant + &(&sign * &q);
+                *c = &*c * &q;
+            }
+            Some(Tok::Ident(x)) if x != "true" && x != "false" => {
+                let poly = self.atoms == Atoms::Poly;
+                if !poly && !m.is_empty() {
+                    return self
+                        .error("a number (the product must stay linear; QF_NRA allows x*y)");
+                }
+                self.pos += 1;
+                let mut k = 1;
+                if self.peek() == Some(&Tok::Caret) {
+                    if !poly {
+                        return self.error("an operator ('^' needs QF_NRA)");
+                    }
+                    self.pos += 1;
+                    k = match self.peek().cloned() {
+                        Some(Tok::Num(q, _)) if q.is_integer() && q.is_positive() => {
+                            self.pos += 1;
+                            q.to_string().parse::<u32>().unwrap_or(u32::MAX)
+                        }
+                        _ => return self.error("a positive integer exponent"),
+                    };
+                }
+                match m.iter_mut().find(|(y, _)| *y == x) {
+                    Some((_, e)) => *e += k,
+                    None => m.push((x, k)),
                 }
             }
-            Some(Tok::Ident(_)) => {
-                let x = self.variable()?;
-                let c = if self.eat(&Tok::Star) {
-                    match self.peek().cloned() {
-                        Some(Tok::Num(q, _)) => {
-                            self.pos += 1;
-                            q
-                        }
-                        _ => return self.error("a number (the product must stay linear)"),
-                    }
-                } else {
-                    Rational::one()
-                };
-                lin.add_var(&x, &(&sign * &c));
-            }
+            _ if variable_only => return self.error("a variable"),
             _ => return self.error("a number or a variable"),
         }
         Ok(())
-    }
-
-    fn variable(&mut self) -> Result<String, ParseError> {
-        match self.peek().cloned() {
-            Some(Tok::Ident(n)) if n != "true" && n != "false" => {
-                self.pos += 1;
-                Ok(n)
-            }
-            _ => self.error("a variable"),
-        }
     }
 
     fn term(&mut self) -> Result<Term, ParseError> {
@@ -728,12 +808,21 @@ mod tests {
                 2
             )
         );
-        assert_eq!(err("x/2 <= 1").1, 1);
-        assert!(err("x/2 <= 1").0.contains("fraction"));
+        assert_eq!(
+            lra("x/2 + 3y/4 <= 1"),
+            cmp(
+                lin(&[("x", q(1, 2)), ("y", q(3, 4))], q(0, 1)),
+                Rel::Le,
+                lin(&[], q(1, 1))
+            )
+        );
+        assert_eq!(err("x/y <= 1").0, "expected a number to divide by, got 'y'");
+        assert_eq!(err("x^2 <= 1").1, 1);
         assert_eq!(
             err("x <= 1/0"),
             ("division by zero in '1/0'".to_string(), 5)
         );
+        assert_eq!(err("x/0 <= 1"), ("division by zero".to_string(), 2));
         let (m, at) = err("x*y <= 1");
         assert_eq!(at, 2);
         assert!(m.contains("linear"), "{m}");
@@ -774,5 +863,23 @@ mod tests {
             parse_constraints(" ").unwrap_err().message,
             "expected a linear constraint"
         );
+    }
+
+    #[test]
+    fn polynomials() {
+        let f = parse("2x^2*y - x*x*y + 3 >= y^3/2", Atoms::Poly).unwrap();
+        let mono = |m: &[(&str, u32)]| m.iter().map(|(x, k)| (x.to_string(), *k)).collect();
+        let Formula::PolyCmp { lhs, rel, rhs } = f else {
+            panic!("{f:?}")
+        };
+        assert_eq!(rel, Rel::Ge);
+        // Like monomials merge: 2x^2y - x^2y = x^2y.
+        assert_eq!(
+            lhs.terms,
+            vec![(mono(&[("x", 2), ("y", 1)]), q(1, 1)), (mono(&[]), q(3, 1))]
+        );
+        assert_eq!(rhs.terms, vec![(mono(&[("y", 3)]), q(1, 2))]);
+        let e = parse("x^0 <= 1", Atoms::Poly).unwrap_err();
+        assert_eq!(e.message, "expected a positive integer exponent, got '0'");
     }
 }

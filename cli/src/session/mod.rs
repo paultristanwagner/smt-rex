@@ -89,9 +89,12 @@ impl Session {
             )?;
             return Ok(Flow::Continue);
         };
+        if cmd.name != "help" && matches!(rest, "help" | "--help" | "-h") {
+            return self.help(cmd.name, out).map(|()| Flow::Continue);
+        }
         let needs_arg = !matches!(cmd.name, "clear" | "help" | "exit");
         if needs_arg && rest.is_empty() {
-            writeln!(out, "{} {}", self.style.error("usage:"), cmd.usage)?;
+            writeln!(out, "{} {}", self.style.usage("usage:"), cmd.usage)?;
             return Ok(Flow::Continue);
         }
         match cmd.name {

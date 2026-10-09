@@ -39,24 +39,28 @@ pub const COMMANDS: &[CommandHelp] = &[
         name: "smt",
         aliases: &[],
         usage: "smt <logic> <formula>",
-        summary: "equality logic or linear real arithmetic (QF_LRA)",
-        details: "QF_EQ and QF_EQUF: atoms are equalities a = b and disequalities a != b,\n\
-                  combined with the same operators as in sat. QF_EQUF also allows functions:\n\
-                  f(x), g(x, y). The model lists which terms are equal: each line is one value.\n\n\
-                  QF_LRA: atoms are linear constraints over real variables, compared with\n\
-                  <=, <, >=, >, = or !=. Coefficients are integers, decimals or fractions,\n\
-                  written against the variable: 2x, 0.8y, 1/2z (or 2*x). The model is exact.\n\
-                  A conjunct min(t) or max(t) asks for an optimum: SMT-Rex reports the exact\n\
-                  value, or that it is unbounded, or that it is approached but never reached.\n\n\
+        summary: "QF_UF, QF_LRA, QF_LIA or QF_NRA in the short syntax",
+        details: "Atoms are combined with the operators of sat. Every model is exact.\n\n\
+                  QF_UF: equalities a = b and disequalities a != b between terms, with\n\
+                  functions f(x), g(x, y). The model lists which terms are equal: one line per\n\
+                  value. QF_EQ is the same without functions (QF_EQUF is another name for QF_UF).\n\n\
+                  QF_LRA, QF_LIA: linear constraints over real or integer variables, compared\n\
+                  with <=, <, >=, >, = or !=. Coefficients are integers, decimals or fractions,\n\
+                  written against the variable: 2x, 0.8y, z/2 (or 2*x, 1/2z). A conjunct min(t)\n\
+                  or max(t) asks for an optimum: the exact value, or that it is unbounded, or\n\
+                  that it is approached but never reached.\n\n\
+                  QF_NRA: polynomial constraints over real variables, with products and\n\
+                  powers: x*y, 2x^3, x^2*y. An irrational value is shown as a root of a\n\
+                  polynomial, with a decimal approximation.\n\n\
                   Examples:\n  \
-                  smt QF_EQ (a = b) & (b = c) & (a != c | c != d)\n  \
-                  smt QF_EQUF (x1 = x2) & (x2 = x3) & (x4 = x5) & (f(x1) != f(x5))\n  \
-                  smt QF_EQUF (f(f(y)) != x) & (x = f(y)) & (y = u) & (x = y)\n  \
-                  smt QF_LRA (x<=-3 | x>=3) & (y=5) & (x+y>=12)\n  \
-                  smt QF_LRA (x<=0 | x>=5) & (x+y=5/2) & (y=1)\n  \
-                  smt QF_LRA (x < 3) & (x > 2) & (x != 5/2)\n  \
+                  smt QF_UF (x1 = x2) & (x2 = x3) & (x4 = x5) & (f(x1) != f(x5))\n  \
+                  smt QF_UF (f(f(y)) != x) & (x = f(y)) & (y = u) & (x = y)\n  \
                   smt QF_LRA (x<=-3 | x>=3) & (y=5) & (x+y>=12) & (min(x))\n  \
-                  smt QF_LRA (x<=0 | x>=5) & (max(x))",
+                  smt QF_LRA (x < 3) & (max(x))\n  \
+                  smt QF_LIA (y + 0.8x <= 4) & (y - x/4 >= 0) & (max(x))\n  \
+                  smt QF_LIA (y - x <= 0) & (y + x <= 1) & (y >= 0.1)\n  \
+                  smt QF_NRA (x^2 + y^2 = 1) & (x^2 + y^3 = 1/2)\n  \
+                  smt QF_NRA (x*y > 0) & (y*z > 0) & (x*z > 0) & (x + y + z = 0)",
     },
     CommandHelp {
         name: "simplex",
@@ -174,7 +178,7 @@ impl Session {
         writeln!(
             out,
             "  {:<width$}  {}",
-            "(smt-lib command)",
+            "(SMT-LIB command)",
             self.style
                 .dim("e.g. (declare-const p Bool); state is kept between lines")
         )?;
@@ -185,14 +189,15 @@ impl Session {
         )?;
         writeln!(
             out,
-            "{}  2x + 0.8y - 1/2z <= 3  (also < >= > = !=)",
+            "{}  2x + 0.8y - z/2 <= 3  (also < >= > = !=)",
             self.style.bold("Linear  ")
         )?;
+        writeln!(out, "{}  x^2 + x*y - 3 > 0", self.style.bold("Poly    "))?;
         writeln!(
             out,
             "{}",
             self.style
-                .dim("Type help <command> for examples. Ctrl-C stops a long solve.")
+                .dim("Type help <command> (or <command> --help) for examples. Ctrl-C stops a long solve.")
         )
     }
 }

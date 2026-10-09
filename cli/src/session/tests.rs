@@ -79,9 +79,11 @@ fn smt_groups_terms_by_value() {
         run(&["smt QF_EQUF (f(f(y)) != x) & (x = f(y)) & (y = u) & (x = y)"]),
         "unsat\n"
     );
-    assert!(run(&["smt QF_LIA (x <= 3)"]).contains("no short syntax yet"));
-    assert!(run(&["smt QF_NRA (x*x <= 3)"]).contains("no short syntax yet"));
-    assert!(run(&["smt QF_BV a=b"]).contains("no short syntax yet"));
+    assert_eq!(
+        run(&["smt QF_UF (f(a) = b) & (f(b) != b) & (a = b)"]),
+        "unsat\n"
+    );
+    assert!(run(&["smt QF_BV a=b"]).contains("QF_BV has no short syntax"));
     assert!(run(&["smt QF_FOO a=b"]).contains("unknown logic"));
     assert!(run(&["smt QF_EQUF f(a) = f(a, b)"]).contains("used with 1 and with 2"));
 }
@@ -117,7 +119,9 @@ fn holds(f: &Formula, model: &[(String, Rational)]) -> bool {
         Formula::Iff(x, y) => holds(x, model) == holds(y, model),
         // An objective constrains nothing; the optimum is checked separately.
         Formula::Objective { .. } => true,
-        Formula::Var(_) | Formula::Eq { .. } => unreachable!("not a QF_LRA formula"),
+        Formula::Var(_) | Formula::Eq { .. } | Formula::PolyCmp { .. } => {
+            unreachable!("not a QF_LRA formula")
+        }
     }
 }
 
@@ -144,7 +148,7 @@ fn checked_model(command: &str, f: &Formula) -> Vec<(String, Rational)> {
         .unwrap_or_else(|| panic!("{command}: {out}"));
     let model = parse_model(lines);
     let names: Vec<&String> = model.iter().map(|(x, _)| x).collect();
-    let mut want = f.reals();
+    let mut want = f.numeric_vars();
     want.sort_by_key(|v| natural_key(v));
     assert_eq!(names, want.iter().collect::<Vec<_>>(), "{command}: {out}");
     assert!(holds(f, &model), "{command}: the model {out} is wrong");
@@ -251,7 +255,7 @@ fn lra_errors() {
     );
     assert!(run(&["smt QF_LRA x*y <= 3"]).starts_with("syntax error:"));
     assert_eq!(run(&["smt QF_LRA"]), "usage: smt QF_LRA <formula>\n");
-    assert!(run(&["smt QF_FOO x <= 3"]).contains("QF_EQ, QF_EQUF and QF_LRA"));
+    assert!(run(&["smt QF_FOO x <= 3"]).contains("QF_UF, QF_LRA, QF_LIA, QF_NRA"));
 }
 
 /// Random QF_LRA formulas: every `sat` model shown must satisfy the formula exactly.
@@ -402,7 +406,7 @@ fn unknown_commands_and_usage() {
     );
     assert_eq!(run(&["sat"]), "usage: sat <formula>\n");
     assert!(run(&["help"]).contains("allsat [-n <limit>] <formula>"));
-    assert!(run(&["help smt"]).contains("smt QF_EQ (a = b)"));
+    assert!(run(&["help smt"]).contains("smt QF_UF (f(f(y)) != x)"));
     assert!(run(&["? tseytin"]).starts_with("tseitin <formula>"));
 }
 
@@ -412,4 +416,50 @@ fn exit_ends_the_session() {
     let mut out = Vec::new();
     assert_eq!(s.run_line("exit", &mut out).unwrap(), Flow::Exit);
     assert_eq!(s.run_line("(exit)", &mut out).unwrap(), Flow::Exit);
+}
+
+#[test]
+fn integer_arithmetic() {
+    assert_eq!(
+        run(&["smt QF_LIA (y + 0.8x <= 4) & (y - x/4 >= 0) & (max(x))"]),
+        "sat\n  max x = 3\n  x=3  y=1\n"
+    );
+    // Satisfiable over the reals, not over the integers.
+    assert_eq!(run(&["smt QF_LIA (2x = 1)"]), "unsat\n");
+    assert_eq!(
+        run(&["smt QF_LIA (y - x <= 0) & (y + x <= 1) & (y >= 0.1)"]),
+        "unsat\n"
+    );
+    // The objective is scaled to integer coefficients; the optimum is shown unscaled.
+    assert_eq!(
+        run(&["smt QF_LIA (x <= 7/2) & (max(x/2))"]),
+        "sat\n  max x/2 = 3/2\n  x=3\n"
+    );
+}
+
+#[test]
+fn polynomial_arithmetic() {
+    assert_eq!(
+        run(&["smt QF_NRA (x^2 = 2) & (x > 0)"]),
+        "sat\n  x≈1.414214 (root 2 of x^2 - 2)\n"
+    );
+    assert_eq!(
+        run(&["smt QF_NRA (x*y > 0) & (y*z > 0) & (x*z > 0) & (x + y + z = 0)"]),
+        "unsat\n"
+    );
+    assert_eq!(run(&["smt QF_NRA (x^2 + y^2 < 0)"]), "unsat\n");
+    let out = run(&["smt QF_NRA (x*y = 6) & (x + y = 5) & (x < y)"]);
+    assert_eq!(out, "sat\n  x=2  y=3\n");
+    assert!(run(&["smt QF_NRA (x^2 <= 1) & (max(x))"]).contains("need QF_LRA or QF_LIA"));
+    assert!(run(&["smt QF_LRA x*y <= 1"]).contains("QF_NRA allows x*y"));
+}
+
+#[test]
+fn help_after_a_command() {
+    let help = run(&["help smt"]);
+    assert!(help.starts_with("smt <logic> <formula>"), "{help}");
+    for line in ["smt help", "smt --help", "smt -h"] {
+        assert_eq!(run(&[line]), help, "{line}");
+    }
+    assert_eq!(run(&["sat --help"]), run(&["help sat"]));
 }

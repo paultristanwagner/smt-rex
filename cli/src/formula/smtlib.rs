@@ -1,4 +1,4 @@
-use super::{Atoms, Formula, Linear, Rel, Term};
+use super::{Atoms, Formula, Linear, Poly, Rel, Term};
 use smtrex_core::Rational;
 use smtrex_smt::sexp::Sexp;
 
@@ -7,6 +7,9 @@ use smtrex_smt::sexp::Sexp;
 /// suffix no identifier in the short language can contain (see [`Smt::symbol`]).
 pub struct Smt {
     pub commands: Vec<Sexp>,
+    /// The objective was multiplied by this to get integer coefficients (QF_LIA); divide the
+    /// optimum by it.
+    pub objective_scale: Rational,
 }
 
 impl Smt {
@@ -70,6 +73,77 @@ fn rational_sexp(q: &Rational) -> Sexp {
     }
 }
 
+/// The smallest positive `k` such that `k·q` is an integer for every `q` in `qs`.
+fn common_denominator<'a>(qs: impl Iterator<Item = &'a Rational>) -> Rational {
+    let mut k = Rational::one();
+    for q in qs {
+        let d = (&k * q).denom().to_string();
+        k = &k * &Rational::parse_decimal(&d).expect("a denominator is a numeral");
+    }
+    k
+}
+
+fn scaled(l: &Linear, k: &Rational) -> Linear {
+    Linear {
+        coeffs: l.coeffs.iter().map(|(x, c)| (x.clone(), c * k)).collect(),
+        constant: &l.constant * k,
+    }
+}
+
+fn linear_terms(l: &Linear) -> impl Iterator<Item = &Rational> {
+    l.coeffs
+        .iter()
+        .map(|(_, c)| c)
+        .chain(std::iter::once(&l.constant))
+}
+
+fn poly_sexp(p: &Poly) -> Sexp {
+    let mut items: Vec<Sexp> = p
+        .terms
+        .iter()
+        .filter(|(m, c)| !c.is_zero() || m.is_empty())
+        .map(|(m, c)| {
+            let mut factors: Vec<Sexp> = m
+                .iter()
+                .flat_map(|(x, k)| std::iter::repeat_n(atom(&smt_symbol(x)), *k as usize))
+                .collect();
+            if *c != Rational::one() || factors.is_empty() {
+                factors.insert(0, rational_sexp(c));
+            }
+            if factors.len() == 1 {
+                factors.pop().unwrap()
+            } else {
+                factors.insert(0, atom("*"));
+                list(factors)
+            }
+        })
+        .collect();
+    match items.len() {
+        0 => atom("0"),
+        1 => items.pop().unwrap(),
+        _ => {
+            items.insert(0, atom("+"));
+            list(items)
+        }
+    }
+}
+
+fn rel_sexp(rel: Rel, lhs: Sexp, rhs: Sexp) -> Sexp {
+    let op = match rel {
+        Rel::Le => "<=",
+        Rel::Lt => "<",
+        Rel::Ge => ">=",
+        Rel::Gt => ">",
+        Rel::Eq | Rel::Ne => "=",
+    };
+    let c = list(vec![atom(op), lhs, rhs]);
+    if rel == Rel::Ne {
+        list(vec![atom("not"), c])
+    } else {
+        c
+    }
+}
+
 fn linear_sexp(l: &Linear) -> Sexp {
     let mut items: Vec<Sexp> = l
         .coeffs
@@ -93,7 +167,10 @@ fn linear_sexp(l: &Linear) -> Sexp {
     }
 }
 
-fn formula_sexp(f: &Formula) -> Sexp {
+/// `f` as an SMT-LIB term; with `integer`, each linear constraint is first multiplied by the
+/// common denominator of its numbers (an equivalent constraint with integer coefficients).
+fn formula_sexp(f: &Formula, integer: bool) -> Sexp {
+    let sub = |g: &Formula| formula_sexp(g, integer);
     match f {
         Formula::Const(b) => atom(if *b { "true" } else { "false" }),
         Formula::Var(v) => atom(&smt_symbol(v)),
@@ -105,34 +182,29 @@ fn formula_sexp(f: &Formula) -> Sexp {
                 list(vec![atom("not"), eq])
             }
         }
-        Formula::Cmp { lhs, rel, rhs } => {
-            let op = match rel {
-                Rel::Le => "<=",
-                Rel::Lt => "<",
-                Rel::Ge => ">=",
-                Rel::Gt => ">",
-                Rel::Eq | Rel::Ne => "=",
-            };
-            let c = list(vec![atom(op), linear_sexp(lhs), linear_sexp(rhs)]);
-            if *rel == Rel::Ne {
-                list(vec![atom("not"), c])
-            } else {
-                c
-            }
+        Formula::Cmp { lhs, rel, rhs } if integer => {
+            let k = common_denominator(linear_terms(lhs).chain(linear_terms(rhs)));
+            rel_sexp(
+                *rel,
+                linear_sexp(&scaled(lhs, &k)),
+                linear_sexp(&scaled(rhs, &k)),
+            )
         }
-        Formula::Not(a) => list(vec![atom("not"), formula_sexp(a)]),
+        Formula::Cmp { lhs, rel, rhs } => rel_sexp(*rel, linear_sexp(lhs), linear_sexp(rhs)),
+        Formula::PolyCmp { lhs, rel, rhs } => rel_sexp(*rel, poly_sexp(lhs), poly_sexp(rhs)),
+        Formula::Not(a) => list(vec![atom("not"), sub(a)]),
         Formula::And(xs) => {
             let mut items = vec![atom("and")];
-            items.extend(xs.iter().map(formula_sexp));
+            items.extend(xs.iter().map(sub));
             list(items)
         }
         Formula::Or(xs) => {
             let mut items = vec![atom("or")];
-            items.extend(xs.iter().map(formula_sexp));
+            items.extend(xs.iter().map(sub));
             list(items)
         }
-        Formula::Implies(a, b) => list(vec![atom("=>"), formula_sexp(a), formula_sexp(b)]),
-        Formula::Iff(a, b) => list(vec![atom("="), formula_sexp(a), formula_sexp(b)]),
+        Formula::Implies(a, b) => list(vec![atom("=>"), sub(a), sub(b)]),
+        Formula::Iff(a, b) => list(vec![atom("="), sub(a), sub(b)]),
         // Removed by `split_objective` before translation.
         Formula::Objective { .. } => atom("true"),
     }
@@ -218,24 +290,40 @@ pub fn to_smtlib(f: &Formula, atoms: Atoms) -> Result<Smt, String> {
                 ]));
             }
         }
-        Atoms::Arith => {
-            commands.push(list(vec![atom("set-logic"), atom("QF_LRA")]));
-            for x in f.reals() {
+        Atoms::Arith | Atoms::Int | Atoms::Poly => {
+            let (logic, sort) = match atoms {
+                Atoms::Arith => ("QF_LRA", "Real"),
+                Atoms::Int => ("QF_LIA", "Int"),
+                _ => ("QF_NRA", "Real"),
+            };
+            commands.push(list(vec![atom("set-logic"), atom(logic)]));
+            for x in f.numeric_vars() {
                 commands.push(list(vec![
                     atom("declare-const"),
                     atom(&smt_symbol(&x)),
-                    atom("Real"),
+                    atom(sort),
                 ]));
             }
         }
     }
+    let integer = atoms == Atoms::Int;
     let (f, objective) = split_objective(f)?;
-    commands.push(list(vec![atom("assert"), formula_sexp(&f)]));
+    commands.push(list(vec![atom("assert"), formula_sexp(&f, integer)]));
+    let mut objective_scale = Rational::one();
     if let Some((maximize, term)) = objective {
         let cmd = if maximize { "maximize" } else { "minimize" };
+        let term = if integer {
+            objective_scale = common_denominator(linear_terms(&term));
+            scaled(&term, &objective_scale)
+        } else {
+            term
+        };
         commands.push(list(vec![atom(cmd), linear_sexp(&term)]));
     }
-    Ok(Smt { commands })
+    Ok(Smt {
+        commands,
+        objective_scale,
+    })
 }
 
 #[cfg(test)]

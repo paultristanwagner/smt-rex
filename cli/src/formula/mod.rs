@@ -10,23 +10,25 @@
 //!
 //!   atom, propositional:   IDENT | 'true' | 'false'
 //!   atom, QF_EQ:           IDENT ('=' | '!=') IDENT
-//!   atom, QF_EQUF:         term  ('=' | '!=') term
+//!   atom, QF_UF:           term  ('=' | '!=') term
 //!   term                   IDENT [ '(' term { ',' term } ')' ]
 //!
-//!   atom, QF_LRA:          'true' | 'false' | linear REL linear
+//!   atom, QF_LRA, QF_LIA:  'true' | 'false' | linear REL linear
+//!   atom, QF_NRA:          'true' | 'false' | poly REL poly
 //!   REL                    '<=' | '<' | '>=' | '>' | '=' | '!='
-//!   linear                 summand { ('+' | '-') summand }
-//!   summand                { '+' | '-' } ( COEF IDENT | NUMBER [ '*' IDENT ]
-//!                                        | IDENT [ '*' NUMBER ] )
+//!   linear, poly           summand { ('+' | '-') summand }
+//!   summand                { '+' | '-' } [ COEF ] factor { ('*' | '/') factor }
+//!   factor                 NUMBER | IDENT [ '^' INTEGER ]          ('^' only in QF_NRA)
 //!   NUMBER                 42 | 0.8 | .5 | 1/2
 //!   COEF                   a NUMBER directly followed by a letter: 2x, 0.8x, 1/2z
 //! ```
 //!
 //! Alternative spellings: `!` for `~`, `&&`, `||`, `=>` for `->`, `<=>` for `<->`, `==` for `=`.
 //!
-//! `1/2z` is `(1/2)·z`: a fraction is two integers around a `/` with no spaces, and `/` means
-//! nothing else. Implicit multiplication needs the number and the variable to touch (`2x`).
-//! In QF_LRA, one `min(linear)` or `max(linear)` may appear as a top-level conjunct.
+//! `1/2z` is `(1/2)·z`: a fraction is two integers around a `/` with no spaces. Otherwise `/`
+//! divides by a number (`z/2`). Implicit multiplication needs the number and the variable to
+//! touch (`2x`). A linear summand has at most one variable; in QF_NRA a summand is a monomial.
+//! In QF_LRA and QF_LIA, one `min(linear)` or `max(linear)` may appear as a top-level conjunct.
 
 mod parse;
 mod smtlib;
@@ -50,6 +52,17 @@ pub enum Atoms {
     Functions,
     /// Linear constraints over real variables (QF_LRA).
     Arith,
+    /// Linear constraints over integer variables (QF_LIA).
+    Int,
+    /// Polynomial constraints over real variables (QF_NRA).
+    Poly,
+}
+
+impl Atoms {
+    /// Whether atoms are arithmetic comparisons.
+    pub fn arithmetic(self) -> bool {
+        matches!(self, Atoms::Arith | Atoms::Int | Atoms::Poly)
+    }
 }
 
 #[derive(Clone, PartialEq, Eq, Debug)]
@@ -62,11 +75,17 @@ pub enum Formula {
         rhs: Term,
         equal: bool,
     },
-    /// A linear constraint `lhs rel rhs` (QF_LRA).
+    /// A linear constraint `lhs rel rhs` (QF_LRA, QF_LIA).
     Cmp {
         lhs: Linear,
         rel: Rel,
         rhs: Linear,
+    },
+    /// A polynomial constraint `lhs rel rhs` (QF_NRA).
+    PolyCmp {
+        lhs: Poly,
+        rel: Rel,
+        rhs: Poly,
     },
     Not(Box<Formula>),
     And(Vec<Formula>),
@@ -114,7 +133,7 @@ pub struct Linear {
 }
 
 impl fmt::Display for Linear {
-    /// The term in the short syntax, e.g. `2x - 1/2y + 3`.
+    /// The term in the short syntax, e.g. `2x - y/2 + 3x/4 + 3`.
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let mut first = true;
         let mut part = |f: &mut fmt::Formatter<'_>, c: &Rational, x: Option<&str>| {
@@ -130,7 +149,15 @@ impl fmt::Display for Linear {
             first = false;
             match x {
                 Some(x) if a == Rational::one() => write!(f, "{x}"),
-                Some(x) => write!(f, "{a}{x}"),
+                Some(x) if a.is_integer() => write!(f, "{a}{x}"),
+                Some(x) => {
+                    let (n, d) = (a.numer(), a.denom());
+                    if n == 1.into() {
+                        write!(f, "{x}/{d}")
+                    } else {
+                        write!(f, "{n}{x}/{d}")
+                    }
+                }
                 None => write!(f, "{a}"),
             }
         };
@@ -150,6 +177,30 @@ impl Linear {
             Some((_, d)) => *d = &*d + c,
             None => self.coeffs.push((x.to_string(), c.clone())),
         }
+    }
+}
+
+/// A monomial: variables with positive exponents, sorted by name; empty for the constant.
+pub type Monomial = Vec<(String, u32)>;
+
+/// A polynomial `c1·m1 + ... + cn·mn`: like monomials merged, in first-occurrence order.
+#[derive(Clone, PartialEq, Eq, Debug, Default)]
+pub struct Poly {
+    pub terms: Vec<(Monomial, Rational)>,
+}
+
+impl Poly {
+    fn add_term(&mut self, m: Monomial, c: &Rational) {
+        match self.terms.iter_mut().find(|(n, _)| *n == m) {
+            Some((_, d)) => *d = &*d + c,
+            None => self.terms.push((m, c.clone())),
+        }
+    }
+
+    fn vars(&self) -> impl Iterator<Item = &String> {
+        self.terms
+            .iter()
+            .flat_map(|(m, _)| m.iter().map(|(x, _)| x))
     }
 }
 
@@ -178,22 +229,23 @@ impl Formula {
         out
     }
 
-    /// The real variables of a QF_LRA formula, in first-occurrence order.
-    pub fn reals(&self) -> Vec<String> {
+    /// The numeric variables of an arithmetic formula, in first-occurrence order.
+    pub fn numeric_vars(&self) -> Vec<String> {
         let mut out: Vec<String> = Vec::new();
-        let mut add = |l: &Linear| {
-            for (x, _) in &l.coeffs {
-                if !out.contains(x) {
-                    out.push(x.clone());
-                }
+        let mut add = |x: &String| {
+            if !out.contains(x) {
+                out.push(x.clone());
             }
         };
         self.walk(&mut |f| match f {
             Formula::Cmp { lhs, rhs, .. } => {
-                add(lhs);
-                add(rhs);
+                lhs.coeffs
+                    .iter()
+                    .chain(&rhs.coeffs)
+                    .for_each(|(x, _)| add(x));
             }
-            Formula::Objective { term, .. } => add(term),
+            Formula::PolyCmp { lhs, rhs, .. } => lhs.vars().chain(rhs.vars()).for_each(&mut add),
+            Formula::Objective { term, .. } => term.coeffs.iter().for_each(|(x, _)| add(x)),
             _ => {}
         });
         out
