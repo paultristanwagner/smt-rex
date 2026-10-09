@@ -70,6 +70,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "smtrex-nra"
+version = "0.1.0"
+dependencies = [
+ "num-bigint",
+ "num-integer",
+ "num-rational",
+ "num-traits",
+ "rustc-hash",
+ "smtrex-core",
+ "smtrex-poly",
+]
+
+[[package]]
 name = "smtrex-poly"
 version = "0.1.0"
 dependencies = [

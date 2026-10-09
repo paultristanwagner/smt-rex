@@ -1,0 +1,15 @@
+[package]
+name = "smtrex-nra"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "Nonlinear real arithmetic for SMT-Rex: cylindrical algebraic decomposition over exact real algebraic numbers"
+
+[dependencies]
+smtrex-core.workspace = true
+smtrex-poly.workspace = true
+num-bigint.workspace = true
+num-rational.workspace = true
+num-traits.workspace = true
+num-integer.workspace = true
+rustc-hash.workspace = true
