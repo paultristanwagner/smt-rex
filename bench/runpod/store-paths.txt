@@ -1,0 +1,8 @@
+# Nix store paths realised on the pod with `nix-store -r` (all on cache.nixos.org, x86_64-linux).
+# They are the exact builds used on the development machine, so the pod runs the same z3/cvc5
+# and builds SMT-Rex with the same compiler. One "<name> <store path>" per line.
+z3     /nix/store/h6856vgss5nkklab2vxx0z8fsmmk19yk-z3-4.16.0
+cvc5   /nix/store/wsjzshbngycrwyk3212s5032b2if894h-cvc5-1.3.4
+cargo  /nix/store/6gk1dh97m5n50scj3yh0ckn62x605pr9-cargo-1.95.0
+rustc  /nix/store/gwm6hsfi1iqxr6glckmrycpwm3sfcbs4-rustc-wrapper-1.95.0
+cc     /nix/store/79mr0jw3qccq7hhf1hh62knxd88dwazc-gcc-wrapper-15.3.0
