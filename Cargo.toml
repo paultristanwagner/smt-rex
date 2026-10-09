@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+members = ["core"]
+
+[workspace.package]
+edition = "2021"
+publish = false  # all rights reserved; no license yet
+repository = "https://github.com/paultristanwagner/smt-rex"
+
+[workspace.dependencies]
+smtrex-core = { path = "core" }
+num-bigint = "0.4"
+num-rational = "0.4"
+num-integer = "0.1"
+num-traits = "0.2"
+rustc-hash = "2"
+smallvec = "1"
+rustyline = "14"
+ctrlc = "3"
+
+# Tuned for the solver hot loops. `panic = "abort"` is intentionally left off so the
+# default `cargo test`/`cargo bench` harnesses stay frictionless; add it to the eventual
+# release binary if desired.
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
