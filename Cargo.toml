@@ -4,7 +4,8 @@ members = ["core", "sat", "term", "theory", "smt", "cli", "poly", "nra"]
 
 [workspace.package]
 edition = "2021"
-publish = false  # all rights reserved; no license yet
+license = "MIT OR Apache-2.0"
+publish = false
 repository = "https://github.com/paultristanwagner/smt-rex"
 
 [workspace.dependencies]

@@ -21,6 +21,7 @@
           meta = {
             description = "SMT solver for QF_UF, QF_LRA, QF_LIA, QF_NRA and QF_BV";
             mainProgram = "smt-rex";
+            license = with pkgs.lib.licenses; [ mit asl20 ];
           };
         };
         default = smt-rex;
