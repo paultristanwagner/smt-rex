@@ -1,0 +1,18 @@
+[package]
+name = "smtrex-smt"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+smtrex-core.workspace = true
+smtrex-term.workspace = true
+smtrex-sat.workspace = true
+smtrex-theory.workspace = true
+smtrex-nra.workspace = true
+smtrex-poly.workspace = true
+num-bigint.workspace = true
+num-traits.workspace = true
+rustc-hash.workspace = true
+num-rational.workspace = true
+num-integer.workspace = true

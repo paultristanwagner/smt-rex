@@ -102,6 +102,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "smtrex-smt"
+version = "0.1.0"
+dependencies = [
+ "num-bigint",
+ "num-integer",
+ "num-rational",
+ "num-traits",
+ "rustc-hash",
+ "smtrex-core",
+ "smtrex-nra",
+ "smtrex-poly",
+ "smtrex-sat",
+ "smtrex-term",
+ "smtrex-theory",
+]
+
+[[package]]
 name = "smtrex-term"
 version = "0.1.0"
 dependencies = [
